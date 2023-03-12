@@ -22,8 +22,7 @@ public class Practica {
 
 	static void metodoTriangulo(double ladoA, double ladoB, double ladoC) {
 		double sp = (ladoA + ladoB + ladoC) / 2;
-		double altura = (2 / ladoA) * Math.sqrt(sp * (sp - ladoA) * (sp - ladoB) * (sp - ladoC));
-		double area = (ladoB * altura) / 2;
+		double area = Math.sqrt(sp * (sp - ladoA) * (sp - ladoB) * (sp - ladoC));
 		System.out.println("EL area del triangulo es: " + area);
 
 	}
@@ -32,10 +31,10 @@ public class Practica {
 	// dado el radio
 	// Utilizar PI de la libreria de Java
 
-	static void metodoCirculo(float radio) {                                                                                     
-		float area = (float) Math.PI * radio * radio;                                                                            
-		float circunferencia = (float) Math.PI * radio * radio;                                                               
-		System.out.println("La circunferencia del circulo es: " + circunferencia + " " + area);                                               
+	static void metodoCirculo(float radio) {
+		double area = Math.PI * radio * radio;
+		double circunferencia = 2 * Math.PI * radio;
+		System.out.println("La circunferencia y el area del circulo son: " + circunferencia + " " + area);
 	}
 
 	// 3 Escribir un metodo que muestre por consola la hora del sistema
@@ -50,9 +49,10 @@ public class Practica {
 	// segundos) segun sea el caso
 	// ej 3600 = "1 hora = 60 min = 3600 seg"
 
-	static void metodoSegundos(float seg) {
-		System.out.println(seg / 3600);
-
+	static void metodoSegundos(int seg) {
+		double hora = seg / 3600;
+		double min = seg / 60;
+		System.out.println(seg + " segundos es igual a " + min + " minutos" + " que es igual a " + hora + "hora(s)");
 	}
 
 	// 5 Escribir un metodo para encontrar el volumen de una esfera dado el radio
@@ -64,31 +64,36 @@ public class Practica {
 
 	// 6 Escribir un metodo para encontrar el volumen de un cono a dado el radio y
 	// la altura
-	static void metodoCono(double radio, double altura) {                                                                      
-		double volumen = (1 / 3) * Math.PI * Math.pow(radio, 2) * altura;                                                         
-		System.out.println("El volumen del cono es: " + volumen);                                                             
+	static void metodoCono(double radio, double altura) {
+		double volumen = (1.0 / 3.0) * Math.PI * Math.pow(radio, 2) * altura;
+		System.out.println("El volumen del cono es: " + volumen);
 	}
 
 	// 7 Encontrar el area superficial de un cubo dado un lado a
-	static void metodoCubo(double ladoa) {
-		double areaSuperficial = 6 * Math.pow(ladoa, 2);
+	static void metodoCubo(double ladoA) {
+		double areaSuperficial = 6 * Math.pow(ladoA, 2);
 		System.out.println("El area superficial del cubo es: " + areaSuperficial);
 	}
 
 	// 8 Escribir un metodo para descubrir si un año ingresado es bisiesto o no
-	// static void metodoBisiesto (int anio) {
-	// s
-	// }
+	static void metodoBisiesto(int anio) {
+		if (anio % 4 == 0 && (anio % 100 != 0 || anio % 400 == 0)) {
+			System.out.println(anio + " Es año bisiesto");
+		} else {
+			System.out.println(anio + " No es año bisiesto");
+		}
 
-	public static void main(String [] args) {                                                                                    
-		metodoTriangulo(7, 7, 7);                                                                                                
-		metodoCirculo(8);                                                                                                        
-		metodoHora();                                                                                                            
-		metodoSegundos(60);                                                                                                      
-		metodoEsfera(25);                                                                                                        
-		metodoCono(27, 14);                                                                                                        
-		metodoCubo(7);                                                                                                           
-		//metodoBisiesto();                                                                                                      
+	}
+
+	public static void main(String[] args) {
+		metodoTriangulo(10, 5, 10);
+		metodoCirculo(8);
+		metodoHora();
+		metodoSegundos(3600);
+		metodoEsfera(25);
+		metodoCono(6, 19);
+		metodoCubo(7);
+		metodoBisiesto(2023);
 	}
 
 }
