@@ -85,6 +85,94 @@ public class Practica {
 
 	}
 
+// 9. Escribir mostrar en pantalla los primeros 100 numeros primos
+	static void metodoPrimos() {
+		int count = 0;
+		int num = 2;
+
+		while (count < 100) {
+			boolean sp = true;
+			for (int i = 2; i <= Math.sqrt(num); i++) {
+				if (num % i == 0) {
+					sp = false;
+					break;
+				}
+			}
+			if (sp) {
+				System.out.println(num);
+				count++;
+			}
+			num++;
+		}
+	}
+
+// 10. Escribir un programa para sumar 2 numeros sin usar operadores aritmeticos
+
+// 11. Escribir un método para verificar si un numero positivo de 2 digitos es
+// palindromo
+
+	static void metodoPalindromo(int num) {
+		if (num > 9 && num < 100) {
+			char[] sNum = (Integer.toString(num)).toCharArray();
+			if (sNum[0] == sNum[1]) {
+				System.out.println(String.valueOf(sNum) + " es Palindromo");
+			} else {
+				System.out.println(String.valueOf(sNum) + " No es Palindromo");
+			}
+		} else {
+			System.out.println(num + " No es un numero de dos digitos");
+		}
+
+	}
+// 12. Sin usar loops, escribir un metodo para sumar todos los digitos de un
+// numero donde 99 >= n >= 10
+
+	static void metodoDigitos(int n) {
+		if (n < 10 || n > 99) {
+			System.out.println("Ingresa un numero de dos digitos (entre 10 y 99)");
+		} else if (n == 0) {
+			System.out.println("La suma de los digitos es: 0");
+		} else {
+			int suma = n % 10 + n / 10;
+			System.out.println("La suma de los digitos es: " + suma);
+		}
+	}
+// 13. Escribir un método para remover espacios en blanco de un String. ej ->
+// "Hola Mundo" -> "HolaMundo"
+
+	static void metodoString(String cadena) {
+		String sinEspacios = cadena.replaceAll("\\s+", "");
+		System.out.println("La cadena sin espacios es: " + sinEspacios);
+
+	}
+
+// 14. Escribir un método para invertir un String. ej -> "Hola" -> "aloH" ---
+// Sin usar loops
+
+	static void metodoInvertirString(String s) {
+		if (s.length() <= 1) {
+			System.out.println("Ingresa un string de al menos 2 caracteres");
+		} else {
+			String invertido = new StringBuilder(s).reverse().toString();
+			System.out.println("El string invertido es: " + invertido);
+		}
+	}
+// 15x. Escribir un metodo para encontrar el factorial de un numero sin loops
+
+	static void metodoFactorial(int num) {
+		int factorial = 1;
+		int originalNum = num;
+		if (num == 0 || num == 1) {
+			System.out.println("El factorial de " + num + " es 1");
+		} else {
+			while (num > 1) {
+				factorial *= num;
+				num--;
+			}
+			System.out.println("El factorial de " + originalNum + " es " + factorial);
+		}
+	}
+
 	public static void main(String[] args) {
 		metodoTriangulo(10, 5, 10);
 		metodoCirculo(8);
@@ -94,20 +182,12 @@ public class Practica {
 		metodoCono(6, 19);
 		metodoCubo(7);
 		metodoBisiesto(2023);
+		metodoPrimos();
+		metodoPalindromo(19);
+		metodoDigitos(18);
+		metodoInvertirString("Hola");
+		metodoString("Hola Mundo");
+		metodoFactorial(6);
 	}
 
 }
-// 9. Escribir mostrar en pantalla los primeros 100 numeros primos
-// 10. Escribir un programa para sumar 2 numeros sin usar operadores aritmeticos
-
-// 11. Escribir un método para verificar si un numero positivo de 2 digitos es
-// palindromo
-// 12. Sin usar loops, escribir un metodo para sumar todos los digitos de un
-// numero donde 99 >= n >= 10
-// 13. Escribir un método para remover espacios en blanco de un String. ej ->
-// "Hola Mundo" -> "HolaMundo"
-// 14. Escribir un método para invertir un String. ej -> "Hola" -> "aloH" ---
-// Sin usar loops
-// 15x. Escribir un metodo para encontrar el factorial de un numero sin loops
-
-// Actividad 1: Si X, Y, Z son variables de tipo boolean con valores X
